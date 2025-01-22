@@ -5,12 +5,9 @@ __lua__
 --by darkbloom
 --v1.0
 
--- constants
+cartdata("io_darkbloom_snake")
 
-u = false
-d = false
-l = false
-r = false
+-- constants
 
 clr_bg    = 3
 clr_wall  = 5
@@ -59,17 +56,18 @@ function _update()
 		if (cntr%updaterate==0) then
 			cntr = 0
 			
-			if (facing==⬆️) snake[1][2]-=1
-			if (facing==⬇️) snake[1][2]+=1
-			if (facing==⬅️) snake[1][1]-=1
-			if (facing==➡️) snake[1][1]+=1
+			if     (facing==⬆️) then snake[1][2]-=1
+			elseif (facing==⬇️) then snake[1][2]+=1
+			elseif (facing==⬅️) then snake[1][1]-=1
+			elseif (facing==➡️) then snake[1][1]+=1 end
 					
 			local head = snake[1]
 		
 			if (head[1]==fruit[1] and head[2]==fruit[2]) length+=growth spawnfruit()
-		
+			
+				
 			for i=2,#snake do
-				dead = (not dead) and (head[1]==snake[i][1] and head[2]==snake[i][2])
+				dead = (dead == false) and (head[1]==snake[i][1] and head[2]==snake[i][2])
 			end
 		
 			dead = head[1]==0 or head[1]==grdsz or head[2]==0 or head[2]==grdsz
@@ -78,16 +76,11 @@ function _update()
 			if (length < #snake) deli(snake,#snake)
 		end
 		
-		if (btn(⬆️) and not u and facing!=⬇️) then facing = ⬆️
-		elseif (btn(⬇️) and not d and facing!=⬆️) then facing = ⬇️
-		elseif (btn(⬅️) and not l and facing!=➡️) then facing = ⬅️
-		elseif (btn(➡️) and not r and facing!=⬅️) then facing = ➡️ end
-		
-		u = btn(⬆️)
-		d = btn(⬇️)
-		l = btn(⬅️)
-		r = btn(➡️)
-		
+		if     (btn(⬆️) and facing!=⬇️) then facing = ⬆️
+		elseif (btn(⬇️) and facing!=⬆️) then facing = ⬇️
+		elseif (btn(⬅️) and facing!=➡️) then facing = ⬅️
+		elseif (btn(➡️) and facing!=⬅️) then facing = ➡️ end
+				
 		cntr+=1
 	end
 end
@@ -110,7 +103,6 @@ function _draw()
 			if (x==snake[1][1] and y==snake[1][2] and dead) clr = clr_dead
 			
 			rectfill(x*pxlsz,y*pxlsz,(x+1)*pxlsz,(y+1)*pxlsz,clr)
---			rect(x*pxlsz,y*pxlsz,(x+1)*pxlsz,(y+1)*pxlsz,0)
 		end
 	end
 	
