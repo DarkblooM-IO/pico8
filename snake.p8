@@ -4,8 +4,6 @@ __lua__
 --snake
 --by darkbloom
 
-cartdata("io_darkbloom_snake")
-
 -- constants
 
 clr_bg    = 3
