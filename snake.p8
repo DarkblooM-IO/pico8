@@ -3,7 +3,6 @@ version 42
 __lua__
 --snake
 --by darkbloom
---v1.0
 
 cartdata("io_darkbloom_snake")
 
