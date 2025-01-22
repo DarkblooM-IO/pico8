@@ -4,13 +4,28 @@ __lua__
 --breakout
 --by darkbloom
 
+-- constants
+
 pl_w = 30
 pl_h = 2
+
+bl_sz = 2
+
+-- functions
+
+function plcenter()
+	-- /todo/
+end
+
+-- callbacks
 
 function _init()
 	pl = {
 		x = 64-(pl_w/2),
 		y = 122
+	}
+	bl = {
+		vel = {x=0,y=0)
 	}
 end
 
